@@ -61,6 +61,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
@@ -80,6 +81,7 @@
         </div>
     </nav>
 
+    <main id="main-content" tabindex="-1">
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="container hero-content">
@@ -174,24 +176,29 @@
                         </div>
                     </div>
                 </div>
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" id="contactForm" aria-label="טופס יצירת קשר">
                     <div class="form-group">
-                        <input type="text" name="name" placeholder="שם מלא" required>
+                        <label for="cf-name" class="sr-only">שם מלא</label>
+                        <input type="text" id="cf-name" name="name" placeholder="שם מלא" required aria-required="true">
                     </div>
                     <div class="form-group">
-                        <input type="tel" name="phone" placeholder="טלפון" required>
+                        <label for="cf-phone" class="sr-only">טלפון</label>
+                        <input type="tel" id="cf-phone" name="phone" placeholder="טלפון" required aria-required="true">
                     </div>
                     <div class="form-group">
-                        <input type="email" name="email" placeholder="אימייל">
+                        <label for="cf-email" class="sr-only">אימייל</label>
+                        <input type="email" id="cf-email" name="email" placeholder="אימייל">
                     </div>
                     <div class="form-group">
-                        <textarea name="message" placeholder="איך נוכל לעזור?" rows="4"></textarea>
+                        <label for="cf-message" class="sr-only">איך נוכל לעזור?</label>
+                        <textarea id="cf-message" name="message" placeholder="איך נוכל לעזור?" rows="4"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary btn-full">שלח פנייה</button>
                 </form>
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
@@ -208,11 +215,12 @@
                         <li><a href="#about">אודות</a></li>
                         <li><a href="blog.html">בלוג</a></li>
                         <li><a href="#contact">צור קשר</a></li>
+                        <li><a href="negishut.html">הצהרת נגישות</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 מאיר כהן - ייעוץ פיננסי. כל הזכויות שמורות.</p>
+                <p>&copy; 2026 מאיר כהן - ייעוץ פיננסי. כל הזכויות שמורות. | <a href="negishut.html">הצהרת נגישות</a></p>
             </div>
         </div>
     </footer>
