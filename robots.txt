@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /private-finance-hub.html
 
 Sitemap: https://meircohen-finance.co.il/sitemap.xml
