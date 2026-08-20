@@ -1,45 +1,50 @@
-// Mobile menu toggle
 const mobileToggle = document.getElementById('mobileToggle');
 const navLinks = document.getElementById('navLinks');
 
-if (mobileToggle && navLinks) {
-    mobileToggle.addEventListener('click', () => {
-        mobileToggle.classList.toggle('active');
-        navLinks.classList.toggle('open');
-    });
-
-    // Close menu on link click
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileToggle.classList.remove('active');
-            navLinks.classList.remove('open');
-        });
-    });
+function closeMenu() {
+  if (!mobileToggle || !navLinks) return;
+  mobileToggle.classList.remove('active');
+  mobileToggle.setAttribute('aria-expanded', 'false');
+  mobileToggle.setAttribute('aria-label', 'פתיחת תפריט');
+  navLinks.classList.remove('open');
+  document.body.classList.remove('menu-open');
 }
 
-// Navbar scroll effect
+if (mobileToggle && navLinks) {
+  mobileToggle.addEventListener('click', () => {
+    const willOpen = !navLinks.classList.contains('open');
+    mobileToggle.classList.toggle('active', willOpen);
+    mobileToggle.setAttribute('aria-expanded', String(willOpen));
+    mobileToggle.setAttribute('aria-label', willOpen ? 'סגירת תפריט' : 'פתיחת תפריט');
+    navLinks.classList.toggle('open', willOpen);
+    document.body.classList.toggle('menu-open', willOpen);
+  });
+
+  navLinks.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeMenu();
+      mobileToggle.focus();
+    }
+  });
+}
+
 const navbar = document.getElementById('navbar');
 if (navbar) {
-    window.addEventListener('scroll', () => {
-        navbar.classList.toggle('scrolled', window.scrollY > 20);
-    });
+  const updateHeader = () => navbar.classList.toggle('scrolled', window.scrollY > 10);
+  updateHeader();
+  window.addEventListener('scroll', updateHeader, { passive: true });
 }
 
-// Contact form handler
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const data = new FormData(contactForm);
-        const name = data.get('name');
-        const phone = data.get('phone');
-        const message = data.get('message') || '';
-
-        // Open WhatsApp with pre-filled message
-        const text = `שלום, שמי ${name}.\nטלפון: ${phone}\n${message}`;
-        const waUrl = `https://wa.me/972502250493?text=${encodeURIComponent(text)}`;
-        window.open(waUrl, '_blank');
-
-        contactForm.reset();
-    });
+  contactForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const data = new FormData(contactForm);
+    const name = String(data.get('name') || '').trim();
+    const phone = String(data.get('phone') || '').trim();
+    const message = String(data.get('message') || '').trim();
+    const text = [`שלום מאיר, שמי ${name}.`, `טלפון: ${phone}`, message].filter(Boolean).join('\n');
+    window.open(`https://wa.me/972502250493?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+  });
 }
