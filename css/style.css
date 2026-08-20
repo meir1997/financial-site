@@ -164,6 +164,48 @@ blockquote { margin: 34px 0 0; padding: 22px 26px 22px 0; border-right: 3px soli
 .page-hero { padding: 86px 0 76px; background: var(--forest-soft); text-align: center; }
 .page-hero h1 { max-width: 840px; margin: 0 auto 18px; font-size: clamp(3rem, 6vw, 5.5rem); }
 .page-hero p { max-width: 620px; margin: auto; color: var(--muted); font-size: 1.08rem; }
+.calculator-page-hero { background: var(--cream); }
+.calculators-section { background: var(--paper); }
+.calculator-stack { display: grid; gap: 28px; }
+.calculator-card { padding: clamp(28px, 5vw, 54px); border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--white); box-shadow: 0 16px 42px rgba(15,47,44,.05); }
+.calculator-card-loan { background: var(--ink); border-color: var(--ink); color: var(--white); }
+.calculator-card-loan h2 { color: var(--white); }
+.calculator-card-loan .calculator-intro > p:not(.eyebrow) { color: #bad1ca; }
+.calculator-intro { max-width: 680px; margin-bottom: 42px; }
+.calculator-intro h2 { margin-bottom: 12px; font-size: clamp(2.35rem, 4vw, 3.55rem); }
+.calculator-intro > p:not(.eyebrow) { margin: 0; color: var(--muted); font-size: 1.05rem; }
+.calculator-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(30px, 5vw, 70px); align-items: stretch; }
+.calculator-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.input-affix { position: relative; }
+.input-affix input { width: 100%; min-height: 52px; padding: 10px 16px 10px 50px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--paper); color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; direction: ltr; text-align: right; }
+.input-affix span { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: .9rem; pointer-events: none; }
+.form-group small { display: block; margin-top: 5px; color: var(--muted); font-size: .76rem; }
+.calculator-helper { margin: 20px 0 0; color: var(--muted); font-size: .82rem; line-height: 1.65; }
+.calculator-card-loan .input-affix input { border-color: rgba(255,255,255,.16); background: rgba(255,255,255,.08); color: var(--white); }
+.calculator-card-loan .input-affix span, .calculator-card-loan .calculator-helper { color: #bad1ca; }
+.calculator-result { display: flex; flex-direction: column; padding: clamp(26px, 4vw, 42px); border-radius: var(--radius); background: var(--forest-soft); color: var(--ink); }
+.loan-result { background: var(--white); }
+.result-label { margin: 0 0 5px; color: var(--forest); font-size: .86rem; font-weight: 700; }
+.result-main { display: block; margin-bottom: 30px; font-family: "Frank Ruhl Libre", serif; font-size: clamp(3.15rem, 6vw, 5.3rem); font-weight: 700; line-height: .98; letter-spacing: -.04em; font-variant-numeric: tabular-nums; direction: ltr; text-align: right; }
+.result-breakdown { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; overflow: hidden; border: 1px solid rgba(22,75,71,.14); border-radius: var(--radius-sm); background: rgba(22,75,71,.14); }
+.result-breakdown > div { padding: 13px 15px; background: rgba(255,255,255,.54); }
+.result-breakdown span, .result-breakdown strong { display: block; }
+.result-breakdown span { color: var(--muted); font-size: .76rem; }
+.result-breakdown strong { margin-top: 3px; color: var(--ink); direction: ltr; text-align: right; font-size: 1.08rem; font-variant-numeric: tabular-nums; }
+.growth-chart { display: flex; align-items: end; gap: 8px; height: 108px; margin-top: 28px; padding-bottom: 19px; border-bottom: 1px solid rgba(22,75,71,.18); }
+.growth-chart > span { position: relative; flex: 1; min-width: 6px; border-radius: 5px 5px 0 0; background: var(--forest); }
+.growth-chart > span::after { content: attr(data-year); position: absolute; bottom: -21px; right: 50%; transform: translateX(50%); color: var(--muted); font-size: .65rem; white-space: nowrap; }
+.amortization { margin-top: 25px; }
+.amortization summary { min-height: 44px; display: flex; align-items: center; color: var(--forest); font-weight: 700; cursor: pointer; }
+.table-scroll { overflow-x: auto; margin-top: 12px; border: 1px solid var(--line); border-radius: var(--radius-sm); }
+.amortization table { width: 100%; border-collapse: collapse; min-width: 480px; font-size: .83rem; }
+.amortization th, .amortization td { padding: 11px 14px; text-align: right; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+.amortization tr:last-child td { border-bottom: 0; }
+.amortization th { color: var(--muted); background: var(--paper); font-size: .75rem; }
+.amortization td:not(:first-child) { direction: ltr; text-align: right; }
+.calculator-disclaimer { display: grid; grid-template-columns: auto 1fr auto; gap: 22px; align-items: center; padding: 24px 28px; border-right: 4px solid var(--sand); background: var(--cream); }
+.calculator-disclaimer strong { color: var(--ink); font-family: "Frank Ruhl Libre", serif; font-size: 1.45rem; }
+.calculator-disclaimer p { margin: 0; color: var(--muted); font-size: .91rem; }
 .blog-content { padding: 90px 0 120px; }
 .coming-soon { max-width: 760px; margin: auto; padding: clamp(40px, 7vw, 76px); text-align: center; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--white); }
 .coming-soon .icon-box { margin: 0 auto 26px; }
@@ -264,6 +306,7 @@ blockquote { margin: 34px 0 0; padding: 22px 26px 22px 0; border-right: 3px soli
   .question-grid article { min-height: 0; }
   .question-grid article > span { margin-bottom: 24px; }
   .knowledge-hero-grid, .guide-grid { grid-template-columns: 1fr; }
+  .calculator-layout { grid-template-columns: 1fr; }
   .guide-miniature { max-width: 620px; }
   .article-grid { grid-template-columns: 1fr; }
   .article-card { min-height: 0; }
@@ -306,6 +349,10 @@ blockquote { margin: 34px 0 0; padding: 22px 26px 22px 0; border-right: 3px soli
   .article-header h1 { font-size: clamp(3rem, 13vw, 4.25rem); }
   .article-body { width: min(100% - 28px, 760px); }
   .article-callout { margin-inline: 0; padding: 24px; }
+  .calculator-card { padding: 26px 18px; }
+  .calculator-fields { grid-template-columns: 1fr; gap: 12px; }
+  .calculator-result { padding: 26px 20px; }
+  .calculator-disclaimer { grid-template-columns: 1fr; gap: 9px; padding: 22px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

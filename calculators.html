@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>מחשבונים פיננסיים | מאיר כהן</title>
+  <meta name="description" content="מחשבון ריבית דריבית ומחשבון הלוואה: בדיקה ראשונית של חיסכון, השקעה והחזר חודשי.">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://meircohen-finance.co.il/calculators.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;600;700&amp;family=Heebo:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=20260820-6">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+  <header class="site-header" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand" aria-label="מאיר כהן - עמוד הבית"><span class="brand-mark" aria-hidden="true">מכ</span><span class="brand-copy"><strong>מאיר כהן</strong><small>תכנון פיננסי בגובה העיניים</small></span></a>
+      <button class="mobile-toggle" id="mobileToggle" type="button" aria-label="פתיחת תפריט" aria-controls="navLinks" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav aria-label="ניווט ראשי"><ul class="nav-links" id="navLinks">
+        <li><a href="index.html#services">איך אני עוזר</a></li><li><a href="index.html#process">התהליך</a></li><li><a href="index.html#about">אודות</a></li><li><a href="blog.html">ידע וכלים</a></li><li><a href="calculators.html" class="active" aria-current="page">מחשבונים</a></li><li><a href="https://wa.me/972502250493" class="button button-small button-primary" target="_blank" rel="noopener">קובעים שיחת היכרות</a></li>
+      </ul></nav>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <section class="page-hero calculator-page-hero">
+      <div class="container">
+        <p class="eyebrow">כלים לבדיקה ראשונית</p>
+        <h1>מספרים שעוזרים<br>לשאול את השאלות הנכונות.</h1>
+        <p>בדקו תרחיש של חיסכון או הלוואה בכמה נתונים פשוטים. התוצאות הן להמחשה בלבד ואינן הצעה, ייעוץ או התחייבות לתנאים.</p>
+      </div>
+    </section>
+
+    <section class="section calculators-section" aria-label="מחשבונים פיננסיים">
+      <div class="container calculator-stack">
+        <article class="calculator-card" id="compound-calculator">
+          <div class="calculator-intro"><p class="eyebrow">חיסכון והשקעה</p><h2>מחשבון ריבית דריבית</h2><p>ראו איך סכום התחלתי והפקדה חודשית יכולים לצמוח לאורך זמן, בהנחת תשואה שנתית קבועה.</p></div>
+          <div class="calculator-layout">
+            <form class="calculator-form" id="compoundForm" novalidate>
+              <div class="calculator-fields">
+                <div class="form-group"><label for="compound-start">סכום התחלתי</label><div class="input-affix"><input id="compound-start" name="start" type="number" inputmode="decimal" min="0" step="500" value="25000" aria-describedby="compound-start-help"><span>₪</span></div><small id="compound-start-help">אפשר להתחיל גם מאפס</small></div>
+                <div class="form-group"><label for="compound-monthly">הפקדה חודשית</label><div class="input-affix"><input id="compound-monthly" name="monthly" type="number" inputmode="decimal" min="0" step="100" value="1000"><span>₪</span></div></div>
+                <div class="form-group"><label for="compound-rate">תשואה שנתית משוערת</label><div class="input-affix"><input id="compound-rate" name="rate" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="6"><span>%</span></div></div>
+                <div class="form-group"><label for="compound-years">משך החיסכון</label><div class="input-affix"><input id="compound-years" name="years" type="number" inputmode="numeric" min="1" max="60" step="1" value="15"><span>שנים</span></div></div>
+              </div>
+              <p class="calculator-helper">החישוב מניח הפקדה בסוף כל חודש וחישוב תשואה חודשי.</p>
+            </form>
+            <div class="calculator-result" aria-live="polite">
+              <p class="result-label">שווי עתידי משוער</p><output class="result-main" id="compoundFuture">₪0</output>
+              <div class="result-breakdown"><div><span>סך ההפקדות</span><strong id="compoundContributions">₪0</strong></div><div><span>צמיחה משוערת</span><strong id="compoundGrowth">₪0</strong></div></div>
+              <div class="growth-chart" id="compoundChart" aria-label="המחשת צמיחת החיסכון לאורך השנים"></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="calculator-card calculator-card-loan" id="loan-calculator">
+          <div class="calculator-intro"><p class="eyebrow">אשראי והתחייבויות</p><h2>מחשבון החזר הלוואה</h2><p>העריכו את ההחזר החודשי ואת עלות הריבית הכוללת בהלוואה בתשלום חודשי קבוע.</p></div>
+          <div class="calculator-layout">
+            <form class="calculator-form" id="loanForm" novalidate>
+              <div class="calculator-fields">
+                <div class="form-group"><label for="loan-amount">סכום ההלוואה</label><div class="input-affix"><input id="loan-amount" name="amount" type="number" inputmode="decimal" min="1" step="1000" value="120000"><span>₪</span></div></div>
+                <div class="form-group"><label for="loan-rate">ריבית שנתית</label><div class="input-affix"><input id="loan-rate" name="rate" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="7"><span>%</span></div></div>
+                <div class="form-group"><label for="loan-years">תקופת ההלוואה</label><div class="input-affix"><input id="loan-years" name="years" type="number" inputmode="numeric" min="1" max="40" step="1" value="5"><span>שנים</span></div></div>
+              </div>
+              <p class="calculator-helper">החישוב אינו כולל הצמדה, עמלות, ביטוחים, ריבית פיגורים או שינוי עתידי בריבית.</p>
+            </form>
+            <div class="calculator-result loan-result" aria-live="polite">
+              <p class="result-label">החזר חודשי משוער</p><output class="result-main" id="loanPayment">₪0</output>
+              <div class="result-breakdown"><div><span>סך ריבית</span><strong id="loanInterest">₪0</strong></div><div><span>סך החזר</span><strong id="loanTotal">₪0</strong></div></div>
+              <details class="amortization"><summary>הצגת לוח סילוקין שנתי</summary><div class="table-scroll"><table><thead><tr><th>שנה</th><th>תשלומים</th><th>ריבית</th><th>יתרה לסיום</th></tr></thead><tbody id="loanSchedule"></tbody></table></div></details>
+            </div>
+          </div>
+        </article>
+
+        <aside class="calculator-disclaimer"><strong>חשוב לדעת</strong><p>המחשבונים נועדו להמחשה ולבדיקה ראשונית. לפני קבלת החלטה כלכלית, חשוב לבחון את הנתונים האישיים, תנאי ההלוואה או ההשקעה, סיכונים ועלויות נוספות.</p><a href="https://wa.me/972502250493" class="text-link" target="_blank" rel="noopener">רוצים לעבור על המספרים יחד?</a></aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-main"><a href="index.html" class="brand brand-footer"><span class="brand-mark" aria-hidden="true">מכ</span><span class="brand-copy"><strong>מאיר כהן</strong><small>תכנון פיננסי בגובה העיניים</small></span></a><nav aria-label="ניווט תחתון"><a href="index.html#services">שירותים</a><a href="index.html#process">התהליך</a><a href="index.html#about">אודות</a><a href="blog.html">ידע וכלים</a><a href="calculators.html">מחשבונים</a><a href="negishut.html">נגישות</a></nav></div><div class="container footer-bottom"><p>© 2026 מאיר כהן - ייעוץ פיננסי. כל הזכויות שמורות.</p><p>המידע באתר הוא כללי ואינו תחליף לייעוץ אישי.</p></div></footer>
+  <script src="js/main.js?v=20260820-3"></script>
+</body>
+</html>
