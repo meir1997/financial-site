@@ -177,16 +177,20 @@ blockquote { margin: 34px 0 0; padding: 22px 26px 22px 0; border-right: 3px soli
 .calculator-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(30px, 5vw, 70px); align-items: stretch; }
 .calculator-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .input-affix { position: relative; }
-.input-affix input { width: 100%; min-height: 52px; padding: 10px 16px 10px 50px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--paper); color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; direction: ltr; text-align: right; }
+.input-affix input, .calculator-form select { width: 100%; min-height: 52px; padding: 10px 16px 10px 50px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--paper); color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; direction: ltr; text-align: right; }
+.calculator-form select { padding: 10px 16px; direction: rtl; text-align: right; cursor: pointer; }
+.form-group-wide { grid-column: 1 / -1; }
 .input-affix span { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: .9rem; pointer-events: none; }
 .form-group small { display: block; margin-top: 5px; color: var(--muted); font-size: .76rem; }
 .calculator-helper { margin: 20px 0 0; color: var(--muted); font-size: .82rem; line-height: 1.65; }
 .calculator-card-loan .input-affix input { border-color: rgba(255,255,255,.16); background: rgba(255,255,255,.08); color: var(--white); }
+.calculator-card-loan .calculator-form select { border-color: rgba(255,255,255,.16); background: rgba(255,255,255,.08); color: var(--white); }
 .calculator-card-loan .input-affix span, .calculator-card-loan .calculator-helper { color: #bad1ca; }
 .calculator-result { display: flex; flex-direction: column; padding: clamp(26px, 4vw, 42px); border-radius: var(--radius); background: var(--forest-soft); color: var(--ink); }
 .loan-result { background: var(--white); }
 .result-label { margin: 0 0 5px; color: var(--forest); font-size: .86rem; font-weight: 700; }
 .result-main { display: block; margin-bottom: 30px; font-family: "Frank Ruhl Libre", serif; font-size: clamp(3.15rem, 6vw, 5.3rem); font-weight: 700; line-height: .98; letter-spacing: -.04em; font-variant-numeric: tabular-nums; direction: ltr; text-align: right; }
+.result-note { min-height: 1.6em; margin: -20px 0 20px; color: var(--muted); font-size: .82rem; }
 .result-breakdown { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; overflow: hidden; border: 1px solid rgba(22,75,71,.14); border-radius: var(--radius-sm); background: rgba(22,75,71,.14); }
 .result-breakdown > div { padding: 13px 15px; background: rgba(255,255,255,.54); }
 .result-breakdown span, .result-breakdown strong { display: block; }

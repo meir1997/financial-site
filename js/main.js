@@ -115,6 +115,8 @@ if (compoundForm) {
 const loanForm = document.getElementById('loanForm');
 if (loanForm) {
   const paymentOutput = document.getElementById('loanPayment');
+  const paymentLabel = document.getElementById('loanPaymentLabel');
+  const paymentNote = document.getElementById('loanPaymentNote');
   const interestOutput = document.getElementById('loanInterest');
   const totalOutput = document.getElementById('loanTotal');
   const schedule = document.getElementById('loanSchedule');
@@ -122,25 +124,44 @@ if (loanForm) {
     const amount = Math.max(1, readNonNegative(loanForm, 'amount', 1));
     const annualRate = readNonNegative(loanForm, 'rate');
     const years = Math.min(40, Math.max(1, Math.round(readNonNegative(loanForm, 'years', 1))));
+    const method = String(loanForm.elements.method?.value || 'spitzer');
     const periods = years * 12;
     const rate = annualRate / 100 / 12;
-    const payment = rate === 0 ? amount / periods : amount * (rate * (1 + rate) ** periods) / ((1 + rate) ** periods - 1);
     let remaining = amount;
-    let totalInterest = 0;
+    let totalPaid = 0;
+    let yearlyInterest = 0;
+    let yearlyPayments = 0;
+    let firstPayment = 0;
+    let lastPayment = 0;
     const rows = [];
+    const spitzerPayment = rate === 0 ? amount / periods : amount * (rate * (1 + rate) ** periods) / ((1 + rate) ** periods - 1);
+    const fixedPrincipal = amount / periods;
     for (let month = 1; month <= periods; month += 1) {
       const interest = remaining * rate;
-      const principal = Math.min(remaining, payment - interest);
+      const principal = method === 'equal-principal'
+        ? Math.min(remaining, fixedPrincipal)
+        : Math.min(remaining, spitzerPayment - interest);
+      const payment = principal + interest;
+      if (month === 1) firstPayment = payment;
+      lastPayment = payment;
       remaining = Math.max(0, remaining - principal);
-      totalInterest += interest;
+      totalPaid += payment;
+      yearlyInterest += interest;
+      yearlyPayments += payment;
       if (month % 12 === 0 || month === periods) {
-        rows.push({ year: Math.ceil(month / 12), payments: payment * (month % 12 || 12), interest: totalInterest, remaining });
-        totalInterest = 0;
+        rows.push({ year: Math.ceil(month / 12), payments: yearlyPayments, interest: yearlyInterest, remaining });
+        yearlyInterest = 0;
+        yearlyPayments = 0;
       }
     }
-    paymentOutput.textContent = formatCurrency.format(payment);
-    interestOutput.textContent = formatCurrency.format(payment * periods - amount);
-    totalOutput.textContent = formatCurrency.format(payment * periods);
+    const isEqualPrincipal = method === 'equal-principal';
+    paymentLabel.textContent = isEqualPrincipal ? 'החזר בחודש הראשון' : 'החזר חודשי קבוע';
+    paymentOutput.textContent = formatCurrency.format(firstPayment);
+    paymentNote.textContent = isEqualPrincipal
+      ? `בחודש האחרון ההחזר יהיה ${formatCurrency.format(lastPayment)}`
+      : 'ההחזר נשאר קבוע לאורך התקופה';
+    interestOutput.textContent = formatCurrency.format(totalPaid - amount);
+    totalOutput.textContent = formatCurrency.format(totalPaid);
     schedule.replaceChildren(...rows.map((row) => {
       const tr = document.createElement('tr');
       [row.year, formatCurrency.format(row.payments), formatCurrency.format(row.interest), formatCurrency.format(row.remaining)].forEach((value) => {
@@ -152,5 +173,6 @@ if (loanForm) {
     }));
   };
   loanForm.addEventListener('input', updateLoan);
+  loanForm.addEventListener('change', updateLoan);
   updateLoan();
 }
