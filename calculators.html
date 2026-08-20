@@ -37,7 +37,7 @@
     <section class="section calculators-section" aria-label="מחשבונים פיננסיים">
       <div class="container calculator-stack">
         <article class="calculator-card" id="compound-calculator">
-          <div class="calculator-intro"><p class="eyebrow">חיסכון והשקעה</p><h2>מחשבון ריבית דריבית</h2><p>ראו איך סכום התחלתי והפקדה חודשית יכולים לצמוח לאורך זמן, בהנחת תשואה שנתית קבועה.</p></div>
+          <div class="calculator-intro"><p class="eyebrow">חיסכון והשקעה</p><h2>מחשבון ריבית דריבית</h2><p>החישוב מציג את שווי החיסכון לפי סכום התחלתי, הפקדה חודשית, תשואה שנתית קבועה ומשך הזמן שהזנתם.</p></div>
           <div class="calculator-layout">
             <form class="calculator-form" id="compoundForm" novalidate>
               <div class="calculator-fields">
@@ -46,29 +46,30 @@
                 <div class="form-group"><label for="compound-rate">תשואה שנתית משוערת</label><div class="input-affix"><input id="compound-rate" name="rate" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="6"><span>%</span></div></div>
                 <div class="form-group"><label for="compound-years">משך החיסכון</label><div class="input-affix"><input id="compound-years" name="years" type="number" inputmode="numeric" min="1" max="60" step="1" value="15"><span>שנים</span></div></div>
               </div>
-              <p class="calculator-helper">החישוב מניח הפקדה בסוף כל חודש וחישוב תשואה חודשי.</p>
+              <p class="calculator-helper">החישוב מדויק לפי הנתונים שהזנתם, בהנחת הפקדה בסוף כל חודש וחישוב תשואה חודשי.</p>
             </form>
             <div class="calculator-result" aria-live="polite">
-              <p class="result-label">שווי עתידי משוער</p><output class="result-main" id="compoundFuture">₪0</output>
-              <div class="result-breakdown"><div><span>סך ההפקדות</span><strong id="compoundContributions">₪0</strong></div><div><span>צמיחה משוערת</span><strong id="compoundGrowth">₪0</strong></div></div>
+              <p class="result-label">שווי עתידי לפי הנתונים שהוזנו</p><output class="result-main" id="compoundFuture">₪0</output>
+              <div class="result-breakdown"><div><span>סך ההפקדות</span><strong id="compoundContributions">₪0</strong></div><div><span>צמיחה מחושבת</span><strong id="compoundGrowth">₪0</strong></div></div>
               <div class="growth-chart" id="compoundChart" aria-label="המחשת צמיחת החיסכון לאורך השנים"></div>
             </div>
           </div>
         </article>
 
         <article class="calculator-card calculator-card-loan" id="loan-calculator">
-          <div class="calculator-intro"><p class="eyebrow">אשראי והתחייבויות</p><h2>מחשבון החזר הלוואה</h2><p>העריכו את ההחזר החודשי ואת עלות הריבית הכוללת בהלוואה בתשלום חודשי קבוע.</p></div>
+          <div class="calculator-intro"><p class="eyebrow">אשראי והתחייבויות</p><h2>מחשבון החזר הלוואה</h2><p>חשבו את ההחזרים ועלות הריבית לפי סכום ההלוואה, הריבית, התקופה ושיטת הסילוקין שנבחרה.</p></div>
           <div class="calculator-layout">
             <form class="calculator-form" id="loanForm" novalidate>
               <div class="calculator-fields">
                 <div class="form-group"><label for="loan-amount">סכום ההלוואה</label><div class="input-affix"><input id="loan-amount" name="amount" type="number" inputmode="decimal" min="1" step="1000" value="120000"><span>₪</span></div></div>
                 <div class="form-group"><label for="loan-rate">ריבית שנתית</label><div class="input-affix"><input id="loan-rate" name="rate" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="7"><span>%</span></div></div>
                 <div class="form-group"><label for="loan-years">תקופת ההלוואה</label><div class="input-affix"><input id="loan-years" name="years" type="number" inputmode="numeric" min="1" max="40" step="1" value="5"><span>שנים</span></div></div>
+                <div class="form-group form-group-wide"><label for="loan-method">שיטת החזר</label><select id="loan-method" name="method"><option value="spitzer">שפיצר - החזר חודשי קבוע</option><option value="equal-principal">קרן שווה (קרן יורדת) - החזר חודשי יורד</option></select></div>
               </div>
-              <p class="calculator-helper">החישוב אינו כולל הצמדה, עמלות, ביטוחים, ריבית פיגורים או שינוי עתידי בריבית.</p>
+              <p class="calculator-helper">החישוב מדויק לפי הנתונים שהזנתם. הוא אינו כולל הצמדה, עמלות, ביטוחים, ריבית פיגורים או שינוי עתידי בריבית.</p>
             </form>
             <div class="calculator-result loan-result" aria-live="polite">
-              <p class="result-label">החזר חודשי משוער</p><output class="result-main" id="loanPayment">₪0</output>
+              <p class="result-label" id="loanPaymentLabel">החזר חודשי קבוע</p><output class="result-main" id="loanPayment">₪0</output><p class="result-note" id="loanPaymentNote"></p>
               <div class="result-breakdown"><div><span>סך ריבית</span><strong id="loanInterest">₪0</strong></div><div><span>סך החזר</span><strong id="loanTotal">₪0</strong></div></div>
               <details class="amortization"><summary>הצגת לוח סילוקין שנתי</summary><div class="table-scroll"><table><thead><tr><th>שנה</th><th>תשלומים</th><th>ריבית</th><th>יתרה לסיום</th></tr></thead><tbody id="loanSchedule"></tbody></table></div></details>
             </div>
