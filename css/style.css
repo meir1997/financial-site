@@ -219,6 +219,7 @@ blockquote { margin: 34px 0 0; padding: 22px 26px 22px 0; border-right: 3px soli
 .guide-miniature { position: relative; display: grid; grid-template-columns: minmax(230px, 330px) 1fr; align-items: end; gap: 22px; }
 .guide-miniature::before { content: ""; position: absolute; z-index: 0; inset: -34px 32px 40px -42px; border-radius: 50%; background: var(--forest-soft); }
 .guide-cover { position: relative; z-index: 1; min-height: 440px; display: flex; flex-direction: column; padding: 36px 34px; border-radius: 7px 20px 20px 7px; background: linear-gradient(90deg, var(--ink) 0 78%, var(--sand) 78%); color: var(--cream); box-shadow: 0 28px 70px rgba(9,35,33,.22); transform: rotate(-2deg); }
+.guide-cover-image { position: relative; z-index: 1; width: min(100%, 330px); aspect-ratio: 707 / 1000; object-fit: cover; border-radius: 7px 20px 20px 7px; box-shadow: 0 28px 70px rgba(9,35,33,.22); transform: rotate(-2deg); }
 .guide-cover::after { content: ""; width: 76px; height: 4px; margin-top: 24px; border-radius: 999px; background: var(--sand); }
 .guide-cover span { color: var(--sand); font-size: .72rem; font-weight: 700; letter-spacing: .08em; }
 .guide-cover strong { margin-top: 72px; font-family: "Frank Ruhl Libre", serif; font-size: clamp(2.2rem, 3.4vw, 3.15rem); line-height: .98; }
@@ -343,6 +344,7 @@ blockquote { margin: 34px 0 0; padding: 22px 26px 22px 0; border-right: 3px soli
   .knowledge-hero h1 { font-size: clamp(3.15rem, 14vw, 4.5rem); }
   .guide-miniature { grid-template-columns: 1fr; justify-items: center; }
   .guide-cover { width: min(100%, 310px); min-height: 420px; }
+  .guide-cover-image { width: min(100%, 310px); }
   .guide-miniature > p { margin: 0; text-align: center; }
   .article-kicker { margin-bottom: 32px; }
   .article-header { padding-inline: 14px; }
