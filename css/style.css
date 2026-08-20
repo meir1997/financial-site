@@ -136,7 +136,7 @@ h3 { color: var(--ink); font-size: 1.25rem; line-height: 1.35; }
 .about { background: var(--forest-soft); }
 .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(54px, 8vw, 110px); align-items: center; }
 .portrait-wrap { position: relative; max-width: 470px; }
-.portrait-wrap img { width: 100%; aspect-ratio: 1/1.12; object-fit: cover; object-position: center top; border-radius: 140px 16px 16px 16px; filter: saturate(.82); }
+.portrait-wrap img { width: 100%; aspect-ratio: 1/1.12; object-fit: cover; object-position: center 18%; border-radius: 140px 16px 16px 16px; filter: saturate(.82); }
 .portrait-label { position: absolute; left: -18px; bottom: 28px; padding: 10px 18px; background: var(--paper); color: var(--ink); border-radius: 999px; font-weight: 600; box-shadow: var(--shadow); }
 .about-copy { max-width: 700px; }
 .about-lead { color: var(--ink); font-size: 1.2rem; font-weight: 500; }
