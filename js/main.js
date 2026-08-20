@@ -64,3 +64,93 @@ if (guideRequestForm) {
     window.location.href = `https://wa.me/972502250493?text=${encodeURIComponent(text)}`;
   });
 }
+
+const formatCurrency = new Intl.NumberFormat('he-IL', {
+  style: 'currency', currency: 'ILS', maximumFractionDigits: 0,
+});
+
+function readNonNegative(form, name, fallback = 0) {
+  const value = Number(form.elements[name]?.value);
+  return Number.isFinite(value) && value >= 0 ? value : fallback;
+}
+
+const compoundForm = document.getElementById('compoundForm');
+if (compoundForm) {
+  const future = document.getElementById('compoundFuture');
+  const contributions = document.getElementById('compoundContributions');
+  const growth = document.getElementById('compoundGrowth');
+  const chart = document.getElementById('compoundChart');
+  const updateCompound = () => {
+    const start = readNonNegative(compoundForm, 'start');
+    const monthly = readNonNegative(compoundForm, 'monthly');
+    const annualRate = readNonNegative(compoundForm, 'rate');
+    const years = Math.min(60, Math.max(1, Math.round(readNonNegative(compoundForm, 'years', 1))));
+    const monthlyRate = annualRate / 100 / 12;
+    let balance = start;
+    const yearlyBalances = [];
+    for (let month = 1; month <= years * 12; month += 1) {
+      balance *= 1 + monthlyRate;
+      balance += monthly;
+      if (month % 12 === 0) yearlyBalances.push(balance);
+    }
+    const deposited = start + monthly * years * 12;
+    future.textContent = formatCurrency.format(balance);
+    contributions.textContent = formatCurrency.format(deposited);
+    growth.textContent = formatCurrency.format(Math.max(0, balance - deposited));
+    const sample = yearlyBalances.filter((_, index) => index === yearlyBalances.length - 1 || index % Math.ceil(years / 6) === 0);
+    const peak = Math.max(...sample, 1);
+    chart.replaceChildren(...sample.map((amount, index) => {
+      const bar = document.createElement('span');
+      bar.style.height = `${Math.max(10, Math.round((amount / peak) * 100))}%`;
+      const year = Math.min(years, index * Math.ceil(years / 6) + 1);
+      bar.dataset.year = `שנה ${index === sample.length - 1 ? years : year}`;
+      bar.title = `${bar.dataset.year}: ${formatCurrency.format(amount)}`;
+      return bar;
+    }));
+  };
+  compoundForm.addEventListener('input', updateCompound);
+  updateCompound();
+}
+
+const loanForm = document.getElementById('loanForm');
+if (loanForm) {
+  const paymentOutput = document.getElementById('loanPayment');
+  const interestOutput = document.getElementById('loanInterest');
+  const totalOutput = document.getElementById('loanTotal');
+  const schedule = document.getElementById('loanSchedule');
+  const updateLoan = () => {
+    const amount = Math.max(1, readNonNegative(loanForm, 'amount', 1));
+    const annualRate = readNonNegative(loanForm, 'rate');
+    const years = Math.min(40, Math.max(1, Math.round(readNonNegative(loanForm, 'years', 1))));
+    const periods = years * 12;
+    const rate = annualRate / 100 / 12;
+    const payment = rate === 0 ? amount / periods : amount * (rate * (1 + rate) ** periods) / ((1 + rate) ** periods - 1);
+    let remaining = amount;
+    let totalInterest = 0;
+    const rows = [];
+    for (let month = 1; month <= periods; month += 1) {
+      const interest = remaining * rate;
+      const principal = Math.min(remaining, payment - interest);
+      remaining = Math.max(0, remaining - principal);
+      totalInterest += interest;
+      if (month % 12 === 0 || month === periods) {
+        rows.push({ year: Math.ceil(month / 12), payments: payment * (month % 12 || 12), interest: totalInterest, remaining });
+        totalInterest = 0;
+      }
+    }
+    paymentOutput.textContent = formatCurrency.format(payment);
+    interestOutput.textContent = formatCurrency.format(payment * periods - amount);
+    totalOutput.textContent = formatCurrency.format(payment * periods);
+    schedule.replaceChildren(...rows.map((row) => {
+      const tr = document.createElement('tr');
+      [row.year, formatCurrency.format(row.payments), formatCurrency.format(row.interest), formatCurrency.format(row.remaining)].forEach((value) => {
+        const td = document.createElement('td');
+        td.textContent = value;
+        tr.append(td);
+      });
+      return tr;
+    }));
+  };
+  loanForm.addEventListener('input', updateLoan);
+  updateLoan();
+}
