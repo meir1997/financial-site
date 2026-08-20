@@ -93,12 +93,8 @@ h3 { color: var(--ink); font-size: 1.25rem; line-height: 1.35; }
 .split-heading h2 { margin: 0; }
 .split-heading > p { margin: 0 0 8px; color: var(--muted); font-size: 1.05rem; }
 .service-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 22px; }
-.service-card { grid-column: span 4; min-height: 430px; display: flex; flex-direction: column; position: relative; padding: 32px; border: 1px solid rgba(16,44,43,.14); border-radius: var(--radius); background: rgba(255,255,255,.55); overflow: hidden; transition: transform var(--transition), box-shadow var(--transition), background var(--transition); }
-.service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); background: var(--white); }
-.service-card-featured { background: var(--forest); border-color: var(--forest); color: #dfeae6; }
-.service-card-featured:hover { background: var(--ink); }
-.service-card-featured h3, .service-card-featured .card-index { color: var(--white); }
-.service-card-featured .icon-box { color: var(--cream); border-color: rgba(255,255,255,.22); }
+.service-card { grid-column: span 4; min-height: 430px; display: flex; flex-direction: column; position: relative; padding: 32px; border: 1px solid rgba(16,44,43,.14); border-radius: var(--radius); background: var(--white); overflow: hidden; transition: transform var(--transition), box-shadow var(--transition); }
+.service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
 .icon-box { width: 58px; height: 58px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--forest); }
 .icon-box svg { width: 27px; }
 .card-index { margin: auto 0 8px; color: var(--sage); font-size: .78rem; font-weight: 700; letter-spacing: .12em; }
