@@ -87,11 +87,6 @@ h3 { color: var(--ink); font-size: 1.25rem; line-height: 1.35; }
 .hero-visual figcaption strong { font-size: 1rem; }
 .caption-number { width: 54px; height: 54px; display: grid; place-items: center; flex: none; border: 1px solid rgba(255,255,255,.6); border-radius: 50%; font-weight: 600; }
 
-.intro-strip { background: var(--ink); color: var(--cream); }
-.intro-strip-inner { min-height: 110px; display: flex; align-items: center; justify-content: center; gap: 14px; text-align: center; font-size: clamp(1.05rem, 1.8vw, 1.35rem); }
-.intro-strip p { margin: 0; color: #bfd0ca; }
-.intro-strip strong { font-family: "Frank Ruhl Libre", serif; font-size: 1.12em; }
-
 .services { background: var(--cream); }
 .section-heading { margin-bottom: 56px; }
 .split-heading { display: grid; grid-template-columns: 1fr .75fr; gap: 80px; align-items: end; }
@@ -112,13 +107,6 @@ h3 { color: var(--ink); font-size: 1.25rem; line-height: 1.35; }
 .check-list { list-style: none; padding: 20px 0 0; margin: 18px 0 0; border-top: 1px solid rgba(116,140,133,.3); }
 .check-list li { position: relative; padding-right: 20px; margin-top: 8px; font-size: .9rem; }
 .check-list li::before { content: ""; position: absolute; right: 0; top: .68em; width: 7px; height: 7px; border-radius: 50%; background: var(--sand); }
-.service-card-image { padding: 0; color: var(--white); background: var(--ink); border: 0; }
-.service-card-image > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .72; }
-.service-card-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(9,35,33,.93), rgba(9,35,33,.05) 75%); }
-.image-card-copy { position: relative; z-index: 1; margin-top: auto; padding: 32px; }
-.image-card-copy .card-index, .image-card-copy h3 { color: var(--white); }
-.image-card-copy p:last-child { margin: 0; color: #d5e0dc; }
-
 .process { background: var(--paper); }
 .process-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(54px, 8vw, 110px); align-items: center; }
 .process-image-wrap { position: relative; padding-left: 34px; padding-bottom: 38px; }
@@ -135,8 +123,8 @@ h3 { color: var(--ink); font-size: 1.25rem; line-height: 1.35; }
 
 .about { background: var(--forest-soft); }
 .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(54px, 8vw, 110px); align-items: center; }
-.portrait-wrap { position: relative; max-width: 470px; }
-.portrait-wrap img { width: 100%; aspect-ratio: 1/1.12; object-fit: cover; object-position: center 18%; border-radius: 140px 16px 16px 16px; filter: saturate(.82); }
+.portrait-wrap { position: relative; width: 100%; max-width: 430px; aspect-ratio: 1; }
+.portrait-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; border-radius: 140px 16px 16px 16px; filter: saturate(.82); }
 .portrait-label { position: absolute; left: -18px; bottom: 28px; padding: 10px 18px; background: var(--paper); color: var(--ink); border-radius: 999px; font-weight: 600; box-shadow: var(--shadow); }
 .about-copy { max-width: 700px; }
 .about-lead { color: var(--ink); font-size: 1.2rem; font-weight: 500; }
@@ -217,9 +205,9 @@ blockquote { margin: 34px 0 0; padding: 22px 26px 22px 0; border-right: 3px soli
   .hero-visual > img { min-height: 520px; }
   .split-heading { grid-template-columns: 1fr; gap: 18px; }
   .service-card { grid-column: span 6; }
-  .service-card-image { grid-column: span 12; min-height: 360px; }
   .process-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
-  .process-image-wrap, .portrait-wrap { max-width: 650px; }
+  .process-image-wrap { max-width: 650px; }
+  .portrait-wrap { max-width: 480px; }
   .question-grid { grid-template-columns: 1fr; }
   .question-grid article { min-height: 0; }
   .question-grid article > span { margin-bottom: 24px; }
@@ -240,7 +228,6 @@ blockquote { margin: 34px 0 0; padding: 22px 26px 22px 0; border-right: 3px soli
   .hero-visual { min-height: 440px; border-radius: 100px 14px 100px 14px; }
   .hero-visual > img { min-height: 440px; }
   .hero-visual figcaption { right: 18px; left: 18px; bottom: 18px; }
-  .intro-strip-inner { min-height: 130px; flex-direction: column; gap: 0; }
   .service-card { grid-column: span 12; min-height: 390px; }
   .process-image-wrap { padding-left: 14px; }
   .process-list li { grid-template-columns: 38px 1fr; gap: 14px; }
