@@ -170,6 +170,62 @@ blockquote { margin: 34px 0 0; padding: 22px 26px 22px 0; border-right: 3px soli
 .coming-soon h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); }
 .coming-soon p { max-width: 540px; margin: 0 auto 28px; color: var(--muted); }
 
+.knowledge-hero { padding: clamp(58px, 8vw, 112px) 0; background: var(--cream); overflow: hidden; }
+.knowledge-hero-grid { display: grid; grid-template-columns: 1.05fr .75fr; gap: clamp(56px, 8vw, 110px); align-items: center; }
+.knowledge-hero h1 { font-size: clamp(3.4rem, 6vw, 5.9rem); }
+.knowledge-hero h1 em { color: var(--forest); font-style: normal; }
+.guide-miniature { position: relative; display: grid; grid-template-columns: minmax(230px, 330px) 1fr; align-items: end; gap: 22px; }
+.guide-miniature::before { content: ""; position: absolute; z-index: 0; inset: -34px 32px 40px -42px; border-radius: 50%; background: var(--forest-soft); }
+.guide-cover { position: relative; z-index: 1; min-height: 440px; display: flex; flex-direction: column; padding: 36px 34px; border-radius: 7px 20px 20px 7px; background: linear-gradient(90deg, var(--ink) 0 78%, var(--sand) 78%); color: var(--cream); box-shadow: 0 28px 70px rgba(9,35,33,.22); transform: rotate(-2deg); }
+.guide-cover::after { content: ""; width: 76px; height: 4px; margin-top: 24px; border-radius: 999px; background: var(--sand); }
+.guide-cover span { color: var(--sand); font-size: .72rem; font-weight: 700; letter-spacing: .08em; }
+.guide-cover strong { margin-top: 72px; font-family: "Frank Ruhl Libre", serif; font-size: clamp(2.2rem, 3.4vw, 3.15rem); line-height: .98; }
+.guide-cover small { max-width: 210px; margin-top: auto; color: #cbd9d4; font-size: .72rem; line-height: 1.55; }
+.guide-miniature > p { position: relative; z-index: 1; display: grid; margin-bottom: 36px; color: var(--muted); font-size: .82rem; }
+.guide-miniature > p strong { color: var(--forest); font-family: "Frank Ruhl Libre", serif; font-size: 1.45rem; }
+
+.articles-section { background: var(--paper); }
+.article-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.article-card { min-height: 390px; display: flex; flex-direction: column; padding: 32px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); transition: transform var(--transition), box-shadow var(--transition); }
+.article-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+.article-kicker { display: flex; justify-content: space-between; gap: 14px; margin-bottom: 48px; color: var(--forest); font-size: .74rem; font-weight: 700; }
+.article-kicker span { color: var(--muted); font-weight: 500; white-space: nowrap; }
+.article-card h3 { margin-bottom: 18px; font-family: "Frank Ruhl Libre", serif; font-size: 1.8rem; }
+.article-card h3 a::after { content: ""; position: absolute; inset: 0; }
+.article-card { position: relative; }
+.article-card > p:not(.article-kicker) { color: var(--muted); }
+.article-link { min-height: 44px; display: inline-flex; align-items: center; margin-top: auto; color: var(--forest); font-weight: 700; }
+
+.guide-section { padding: clamp(76px, 9vw, 128px) 0; background: var(--ink); color: var(--white); }
+.guide-grid { display: grid; grid-template-columns: 1.1fr .75fr; gap: clamp(56px, 8vw, 110px); align-items: center; }
+.guide-copy h2 { color: var(--white); }
+.guide-copy > p:not(.eyebrow) { max-width: 670px; color: #bad1ca; font-size: 1.05rem; }
+.guide-benefits { display: grid; gap: 10px; list-style: none; padding: 0; margin: 30px 0 0; color: #dce8e4; }
+.guide-benefits li { position: relative; padding-right: 22px; }
+.guide-benefits li::before { content: ""; position: absolute; right: 0; top: .72em; width: 8px; height: 8px; border-radius: 50%; background: var(--sand); }
+.guide-form { padding: 32px; border: 1px solid rgba(255,255,255,.14); border-radius: var(--radius); background: rgba(255,255,255,.07); }
+.guide-form .button { width: 100%; }
+
+.article-header { padding: clamp(64px, 9vw, 126px) 20px; background: var(--forest-soft); }
+.article-header-inner { width: min(100%, 900px); margin-inline: auto; }
+.article-back { min-height: 44px; display: inline-flex; align-items: center; margin-bottom: 38px; color: var(--forest); font-weight: 600; }
+.article-header h1 { max-width: 880px; font-size: clamp(3.25rem, 6.2vw, 5.8rem); }
+.article-deck { max-width: 780px; margin-bottom: 30px; color: #4b625e; font-size: clamp(1.08rem, 1.8vw, 1.3rem); }
+.article-meta { display: flex; flex-wrap: wrap; gap: 0; color: var(--muted); font-size: .82rem; }
+.article-meta span { display: flex; align-items: center; }
+.article-meta span:not(:last-child)::after { content: ""; width: 4px; height: 4px; margin: 0 12px; border-radius: 50%; background: var(--sand); }
+.article-body { width: min(100% - 40px, 760px); margin-inline: auto; padding: clamp(66px, 8vw, 106px) 0; }
+.article-body p, .article-body li { color: #405753; font-size: 1.08rem; line-height: 1.9; }
+.article-body .article-lead { margin-bottom: 42px; color: var(--ink); font-family: "Frank Ruhl Libre", serif; font-size: 1.55rem; line-height: 1.65; }
+.article-body h2 { margin: 52px 0 14px; font-size: clamp(2rem, 4vw, 2.65rem); line-height: 1.2; }
+.article-callout { margin: 44px -34px; padding: 28px 34px; border-right: 4px solid var(--sand); background: var(--cream); }
+.article-callout strong { display: block; margin-bottom: 7px; color: var(--ink); font-family: "Frank Ruhl Libre", serif; font-size: 1.35rem; }
+.article-callout p { margin-bottom: 0; }
+.article-disclaimer { margin-top: 64px; padding: 22px 24px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--paper); color: var(--muted); font-size: .84rem; line-height: 1.75; }
+.article-cta { padding: clamp(60px, 8vw, 96px) 20px; background: var(--forest); color: var(--white); text-align: center; }
+.article-cta h2 { color: var(--white); font-size: clamp(2.5rem, 5vw, 4.2rem); }
+.article-cta .eyebrow::before { display: none; }
+
 .legal-page { max-width: 840px; margin: 0 auto; padding: 80px 20px 110px; }
 .legal-page h1 { font-size: clamp(3rem, 6vw, 5rem); }
 .legal-page h2 { margin: 46px 0 12px; font-size: 1.75rem; }
@@ -207,6 +263,10 @@ blockquote { margin: 34px 0 0; padding: 22px 26px 22px 0; border-right: 3px soli
   .question-grid { grid-template-columns: 1fr; }
   .question-grid article { min-height: 0; }
   .question-grid article > span { margin-bottom: 24px; }
+  .knowledge-hero-grid, .guide-grid { grid-template-columns: 1fr; }
+  .guide-miniature { max-width: 620px; }
+  .article-grid { grid-template-columns: 1fr; }
+  .article-card { min-height: 0; }
 }
 
 @media (max-width: 640px) {
@@ -235,6 +295,15 @@ blockquote { margin: 34px 0 0; padding: 22px 26px 22px 0; border-right: 3px soli
   .footer-main nav { display: grid; grid-template-columns: 1fr 1fr; }
   .status-row { flex-direction: column; gap: 4px; }
   .status-row span { text-align: right; }
+  .knowledge-hero h1 { font-size: clamp(3.15rem, 14vw, 4.5rem); }
+  .guide-miniature { grid-template-columns: 1fr; justify-items: center; }
+  .guide-cover { width: min(100%, 310px); min-height: 420px; }
+  .guide-miniature > p { margin: 0; text-align: center; }
+  .article-kicker { margin-bottom: 32px; }
+  .article-header { padding-inline: 14px; }
+  .article-header h1 { font-size: clamp(3rem, 13vw, 4.25rem); }
+  .article-body { width: min(100% - 28px, 760px); }
+  .article-callout { margin-inline: 0; padding: 24px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

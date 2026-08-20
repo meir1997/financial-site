@@ -45,6 +45,22 @@ if (contactForm) {
     const phone = String(data.get('phone') || '').trim();
     const message = String(data.get('message') || '').trim();
     const text = [`שלום מאיר, שמי ${name}.`, `טלפון: ${phone}`, message].filter(Boolean).join('\n');
-    window.open(`https://wa.me/972502250493?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+    window.location.href = `https://wa.me/972502250493?text=${encodeURIComponent(text)}`;
+  });
+}
+
+const guideRequestForm = document.getElementById('guideRequestForm');
+if (guideRequestForm) {
+  guideRequestForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const data = new FormData(guideRequestForm);
+    const name = String(data.get('name') || '').trim();
+    const phone = String(data.get('phone') || '').trim();
+    const text = [
+      `שלום מאיר, שמי ${name}.`,
+      'אשמח לקבל את "המדריך למשקיע המתחיל".',
+      `טלפון: ${phone}`,
+    ].join('\n');
+    window.location.href = `https://wa.me/972502250493?text=${encodeURIComponent(text)}`;
   });
 }
